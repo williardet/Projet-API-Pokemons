@@ -1,0 +1,42 @@
+HTTP (HyperText Transfer Protocol) est le langage (protocole) grâce auquel le navigateur communique avec le serveur pour lui envoyer des demandes, que le serveur traite puis auxquelles il répond en envoyant le contenu demandé.
+
+API : Application Programming Interface, une interface côté serveur qui définit les points d'accès et les règles permettant à un client (navigateur, app) de demander des données ou des actions, en utilisant HTTP comme moyen de communication.
+Dans le web, elle reçoit une requête (HTTP), exécute une action (lire, créer, supprimer, modifier), renvoie une réponse (souvent en JSON).
+Les données sont soit stockées dans un JSON, SQLite, PostgreSQL/MySQL au choix
+
+Comment une API répond?
+un code HTTP(200=OK, 201=Created, 400=Bad Request, 404=Not Found, 500=Server Error), un JSON et parfois des headers.
+
+Déploiement possible sur: Render, Railway, Deta, Fly.io, Docker + VPS
+
+API REST: Le standard moderne
+Elle contient des models(structure de données: dataclasses, ORM), routes(endpoints), controllers(logique métier), database(SQLite, PostSQL...), schémas(validation:Pydantic, dataclasses) et des tests(pytest).
+
+REST est un style d'API basé sur des URL(adresse exacte d'une ressource) claires, des méthodes HTTP(intention de la demande), des réponses JSON, pas de sessions - pas d'état côté serveur.
+
+Les méthodes HTTP (super important)
+GET : lire -> get/pokemons (afficher)
+POST : créer -> post/pokemon
+PUT : modifier -> put/pokemon/3 (modifier le pokemon 3)
+DELETE : supprimer -> delete/pokemon/3 (supprimer le pokemon 3)
+
+CRUD : La base de toute API
+Create = POST
+Read = GET
+Update = PUT
+Delete = DELETE
+
+Les routes (endpoints) : une URL + une méthode + une fonction Python
+Chaque route correspond à une action précise.
+
+ORM (Object-Relational Mapping) : outil faisant le lien entre le code et la base de donnée.
+Il permet d'utiliser la base de données via des objets Python, sans écrire de SQL.
+Ex: SQLAlchemy, Django ORM
+
+Lors du changement de repertoire initial:
+
+    Remove-Item -Recurse -Force .\env (supprimer l'environnement actuel)
+    python -m venv env (créer un nouveau)
+    .\env\Scripts\Activate.ps1 (activer l'environnement)
+    pip install fastapi uvicorn (installer fastapi uvicorn)
+    uvicorn main:app --reload (lancer le projet, main = nom de l'application créée)
