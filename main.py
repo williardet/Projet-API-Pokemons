@@ -5,14 +5,6 @@ import json
 import os
 import uvicorn
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("app:app", host="0.0.0.0", port=port)
-
-@app.get("/")
-def read_root():
-    return {"message": "API Pokémon opérationnelle"}
-
 # 1) Chargement du fichier JSON contenant les pokémons
 with open("pokemon.json", "r") as f:
     pokemon_list = json.load(f)
@@ -177,3 +169,12 @@ def search_pokemon(
         return res
     
     raise HTTPException(status_code=404, detail="Aucun Pokemon ne répond aux critères de recherche")
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
+
+@app.get("/")
+def read_root():
+    return {"message": "API Pokémon opérationnelle"}
