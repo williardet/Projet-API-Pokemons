@@ -2,7 +2,17 @@ from dataclasses import dataclass, asdict
 from typing import Union
 from fastapi import FastAPI, Path, HTTPException
 import json
- 
+import os
+import uvicorn
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
+
+@app.get("/")
+def read_root():
+    return {"message": "API Pokémon opérationnelle"}
+
 # 1) Chargement du fichier JSON contenant les pokémons
 with open("pokemon.json", "r") as f:
     pokemon_list = json.load(f)
