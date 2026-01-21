@@ -2,8 +2,6 @@ from dataclasses import dataclass, asdict
 from typing import Union
 from fastapi import FastAPI, Path, HTTPException
 import json
-import os
-import uvicorn
 
 # 1) Chargement du fichier JSON contenant les pokémons
 with open("pokemon.json", "r") as f:
@@ -169,12 +167,3 @@ def search_pokemon(
         return res
     
     raise HTTPException(status_code=404, detail="Aucun Pokemon ne répond aux critères de recherche")
-
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
-
-@app.get("/")
-def read_root():
-    return {"message": "API Pokémon opérationnelle"}
