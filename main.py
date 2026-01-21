@@ -4,9 +4,10 @@ from fastapi import FastAPI, Path, HTTPException
 import json
 
 # 1) Chargement du fichier JSON contenant les pokémons
-with open("pokemon.json", "r") as f:
+json_path = os.path.join(os.path.dirname(__file__), "pokemon.json")
+with open(json_path, "r") as f:
     pokemon_list = json.load(f)
-
+    
 list_pokemons = {k + 1: v for k, v in enumerate(pokemon_list)}
 
 # 2) Définition de la classe Pokemon (dataclass)
