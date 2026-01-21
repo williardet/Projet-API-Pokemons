@@ -2,6 +2,7 @@ from dataclasses import dataclass, asdict
 from typing import Union
 from fastapi import FastAPI, Path, HTTPException
 import json
+import os
 
 # 1) Chargement du fichier JSON contenant les pokémons
 json_path = os.path.join(os.path.dirname(__file__), "pokemon.json")
